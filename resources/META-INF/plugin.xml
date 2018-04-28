@@ -1,0 +1,39 @@
+<idea-plugin>
+  <id>com.zplugins.plugins.mayihelpu</id>
+  <name>MayIHelpU</name>
+  <version>1.0</version>
+  <vendor email="wlals822@naver.com">Zimin Byun</vendor>
+
+  <description><![CDATA[
+      It processes your order<br>
+      <em>most HTML tags may be used</em>
+    ]]></description>
+
+  <change-notes><![CDATA[
+      1.0 Search your input <br>
+      <em>most HTML tags may be used</em>
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <action id="action_request_order" class="com.zplugins.mayihelpu.MayIHelpUAction" text="SearchIt"
+            description="Launch browser with user&#39;s input">
+      <add-to-group group-id="ToolsMenu" anchor="first"/>
+      <keyboard-shortcut keymap="Mac OS X 10.5+" first-keystroke="meta i"/>
+    </action>
+  </actions>
+
+</idea-plugin>
