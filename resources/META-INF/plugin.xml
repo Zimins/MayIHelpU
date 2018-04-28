@@ -1,12 +1,18 @@
 <idea-plugin>
   <id>com.zplugins.plugins.mayihelpu</id>
   <name>MayIHelpU</name>
-  <version>1.0</version>
+  <version>1.1</version>
   <vendor email="wlals822@naver.com">Zimin Byun</vendor>
 
   <description><![CDATA[
-      It processes your order<br>
-      <em>most HTML tags may be used</em>
+      It processes your order.<br>
+      Current feature: <br>
+      With shortcut command + i ,
+
+      Dialog shows and input your word. <br>
+      Then it will search your input at google.
+
+
     ]]></description>
 
   <change-notes><![CDATA[
