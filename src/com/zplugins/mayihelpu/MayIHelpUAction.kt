@@ -1,8 +1,5 @@
 package com.zplugins.mayihelpu
 
-import com.intellij.configurationStore.archiveState
-import com.intellij.ide.BrowserUtil
-import com.intellij.jarRepository.services.artifactory.Endpoint
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import com.intellij.openapi.ui.InputValidator
@@ -14,29 +11,31 @@ class MayIHelpUAction : AnAction() {
         val project = event?.project
         if (project != null) {
 
-            val text = Messages.showInputDialog(null, "Search it!", null, "", QueryValidator()) ?: return
+            var input = Messages.showInputDialog(null, "Search it!", null, "", QueryValidator()) ?: return
+            var command: String
 
-//            val inputText = processText(text)
-            val searchHost = getSearchHost(text)
-
-
-            when (searchHost) {
-                SearchHost.NAVER -> browseByNaver(text)
-                SearchHost.ANDROID -> browseByAndroid(text)
-                SearchHost.GREPCODE -> browseByGrepCode(text)
-                else -> browseByGoogle(text)
+            val searchHost = getSearchHost(input)
+            if (hasCommand(input)) {
+                command = getCommand(input)
+                input = getRawInput(input)
             }
+
+
+            searchHost.search(input)
         }
     }
 
+    private fun getRawInput(input: String): String {
+        val borderPos = input.indexOf(' ')
+        return input.substring(borderPos + 1)
+    }
 
-    private fun processText(input: String?): String? {
-        input ?: return null
+    private fun hasCommand(input: String): Boolean{
+        return input[0] == ':'
+    }
 
-        if (input[0] == ':') {
-            return input
-        }
-        return input
+    private fun getCommand(input: String): String {
+        return input.split(" ")[0]
     }
 
     fun getSearchHost(input: String): SearchHost {
@@ -51,26 +50,6 @@ class MayIHelpUAction : AnAction() {
         } else {
             SearchHost.GOOGLE
         }
-    }
-
-    private fun browseByGoogle(input: String?) {
-        input ?: return
-
-        BrowserUtil.browse("https://www.google.co.kr/search?q=$input")
-    }
-
-    private fun browseByAndroid(input: String) {
-        BrowserUtil.browse("https://developer.android.com/s/results/?q=$input&p=%2F")
-    }
-
-    private fun browseByGrepCode(input: String) {
-        BrowserUtil.browse("http://grepcode.com/search/?query=$input")
-    }
-
-    private fun browseByNaver(input: String?) {
-        input ?: return
-
-        BrowserUtil.browse("https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=$input")
     }
 
     class QueryValidator : InputValidator {
