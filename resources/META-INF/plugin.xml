@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>com.zplugins.plugins.mayihelpu</id>
     <name>MayIHelpU</name>
-    <version>1.1</version>
+    <version>1.2</version>
     <vendor email="wlals822@naver.com">Zimin Byun</vendor>
 
     <description><![CDATA[
@@ -12,7 +12,16 @@
       Input your query at dialog, press enter. <br>
       Then it will search your input at default browser.
 
-      available on mac now
+      available on mac now.
+
+      use case:
+
+      input                 result
+      kotlin            ->  search "kotlin" at google .
+      :android toast    ->  search "toast" at android developers page.
+      :grep context     ->  search "context" at grepcode
+      :naver 정자역       ->  search "정자역" at naver
+
     ]]></description>
 
     <change-notes><![CDATA[

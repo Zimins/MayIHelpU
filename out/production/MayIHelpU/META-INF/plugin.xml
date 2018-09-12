@@ -9,15 +9,14 @@
       Current feature: <br>
       With shortcut command + i ,
 
-      Dialog shows and input your word. <br>
-      Then it will search your input at google.
+      Input your query at dialog, press enter. <br>
+      Then it will search your input at default browser.
 
 
     ]]></description>
 
   <change-notes><![CDATA[
-      1.0 Search your input <br>
-      <em>most HTML tags may be used</em>
+      1.0 Search your input
     ]]>
   </change-notes>
 
